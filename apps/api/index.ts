@@ -53,3 +53,5 @@ app.use((err: Error, req: Request, res: Response, next: Function) => {
 app.listen(DEFAULT_PORT, () => {
   console.log(`Server running on port ${DEFAULT_PORT}`);
 });
+
+export default app;
