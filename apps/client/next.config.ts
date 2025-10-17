@@ -1,3 +1,4 @@
+import CONSTANTS from "@/constants";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -5,8 +6,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/external-api/:path*', // Match any path under /api
-        destination: 'https://api-zeta-puce-36.vercel.app/:path*', // Proxy to destination
+        source: '/external-api/:path*', // Match any path under /external-api
+        destination: `${CONSTANTS.API_DOMAIN}/:path*`, // Proxy to destination
       },
     ];
   },
