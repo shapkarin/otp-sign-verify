@@ -45,6 +45,8 @@ app.post('/verify-signature', async (req: Request<{}, {}, VerifySignatureRequest
   }
 });
 
+// app.get('/generate-message', () => { console.log('and store it with lifetime')})
+
 app.use((err: Error, req: Request, res: Response, next: Function) => {
   console.error('Unhandled error:', err);
   res.status(500).json({ error: 'Internal server error' });
