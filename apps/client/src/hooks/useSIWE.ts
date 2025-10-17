@@ -39,7 +39,7 @@ const useSIWE = () => {
     return publicKey;
   }, [primaryWallet])
 
-  // TODO: make that just a function, not React form action
+  // TODO: make that just a function, not React form action and use it here if still relay on React form
   const verrifyMessageAction = useCallback(async (currentState: string | null, formData: FormData): Promise<string | null>  => {
     const messageFromTextArea = formData.get('message') as string;
     try {
@@ -58,7 +58,7 @@ const useSIWE = () => {
       const msg = err instanceof Error ? err.message : String(err);
       return `Failed: ${msg}`;
     }
-  }, [primaryWallet, message]);
+  }, [signMessage]);
 
   return { siweData, message, verrifyMessageAction };
 }

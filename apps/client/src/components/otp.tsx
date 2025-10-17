@@ -18,13 +18,6 @@ const truncateAddress = (address?: string): string => {
 
 const inputClasses = 'border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400';
 
-const CONFIG = {
-  chainId: 1,
-  domain: typeof window !== 'undefined' ? window.location.host : 'myawesome.app',
-  uri: typeof window !== 'undefined' ? window.location.href : 'http://myawesome.app',
-  apiHost: process.env.NEXT_PUBLIC_API_HOST || '/external-api',
-} as const;
-
 // Reusable form input
 const FormInput: FC<{ name: string; type: string; placeholder: string; defaultValue?: string; required?: boolean }> = ({
   name,
