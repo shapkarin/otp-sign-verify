@@ -16,6 +16,8 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_API }}
           vercel-args: '--prod'
           working-directory: ./apps/api  # Path to Express.js API app
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          scope: ${{ secrets.VERCEL_ORG_ID}}
 
   deploy-client:
     runs-on: ubuntu-latest
@@ -29,3 +31,5 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_CLIENT }}
           vercel-args: '--prod'
           working-directory: ./apps/client  # Path to Next.js client app
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          scope: ${{ secrets.VERCEL_ORG_ID}}
