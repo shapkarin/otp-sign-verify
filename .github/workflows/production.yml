@@ -1,0 +1,31 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v41
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_API }}
+          vercel-args: '--prod'
+          working-directory: ./apps/api  # Path to Express.js API app
+
+  deploy-client:
+    runs-on: ubuntu-latest
+    needs: deploy-api  # Ensures API deploys first
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v41
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_CLIENT }}
+          vercel-args: '--prod'
+          working-directory: ./apps/client  # Path to Next.js client app
